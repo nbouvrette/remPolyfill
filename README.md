@@ -22,11 +22,11 @@ There is not a lot of options today to polyfill REM but the rare options availab
 
 Simply add this script after your <link> (stylesheets) elements.
 
-	<script src="rem.js"></script>
+	<script src="remPolyfill.js"></script>
 
 ### Media Queries
 
-So what now, you need @media (media queries) support but `respond.js` does not support REM units. No problem, simply add the modified `respond.js` script in this repository. Make sure to add this after the `rem.js` since it depends on this script to be loaded first. `rem.js` must also be loaded synchronously to make sure it will be ready to use.
+So what now, you need @media (media queries) support but `respond.js` does not support REM units. No problem, simply add the modified `respond.js` script in this repository. Make sure to add this after the `remPolyfill.js` since it depends on this script to be loaded first. `remPolyfill.js` must also be loaded synchronously to make sure it will be ready to use.
 
 	<script src="respond.js"></script>
 
