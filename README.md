@@ -8,8 +8,8 @@ There is not a lot of options today to polyfill REM but the rare options availab
 
 ### What is supported
 
-1. Get the original CSS of all href of your link[rel=stylesheet] elements.
-2. Replace (in-place) all stylesheets of these elements with the REM changed by the PX equivalent value.
+1. All CSS contained in link[rel=stylesheet] elements.
+2. Replace (**in-place**) all stylesheets of these elements with the REM changed by the PX equivalent value.
 3. Does not run if REM is supported (safe to add on recent browser).
 
 ### What is not supported
