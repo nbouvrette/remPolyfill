@@ -16,7 +16,7 @@ There is not a lot of options today to polyfill REM but the rare options availab
 
 1. @import or inline CSS in <style> tags.
 2. Dynamic behaviors of REM units (onces it's in PX, its in PX).
-3. @media (media queries). If your browser does not support it natively. You will need to add the modified version of `respond.js`.
+3. @media (media queries). If your browser does not support it natively. You will need to add the modified version of `respond.js` (details below).
 
 ### Usage
 
