@@ -60,25 +60,29 @@
             if (!req) {
                 return;
             }
-            req.open("GET", url, true);
-            req.onreadystatechange = function () {
-                if (req.readyState !== 4 || req.status !== 200 && req.status !== 304) {
+            try {
+                req.open("GET", url, true);
+                req.onreadystatechange = function () {
+                    if (req.readyState !== 4 || req.status !== 200 && req.status !== 304) {
+                        return;
+                    }
+                    if (typeof window.remPolyfill !== 'undefined' && !window.remPolyfill.remIsSupported()) {
+                        callback(req.responseText.replace(
+                            /([\d]+\.[\d]+|\.[\d]+|[\d]+)rem/g, function (fullMatch, groupMatch) {
+                                return Math.round(parseFloat(groupMatch * remPolyfill.getBodyFontSize())) + 'px';
+                            }
+                        ));
+                    } else {
+                        callback(req.responseText);
+                    }
+                };
+                if (req.readyState === 4) {
                     return;
                 }
-                if (typeof window.remPolyfill !== 'undefined' && !window.remPolyfill.remIsSupported()) {
-                    callback(req.responseText.replace(
-                        /([\d]+\.[\d]+|\.[\d]+|[\d]+)rem/g, function (fullMatch, groupMatch) {
-                            return Math.round(parseFloat(groupMatch * remPolyfill.getBodyFontSize())) + 'px';
-                        }
-                    ));
-                } else {
-                    callback(req.responseText);
-                }
-            };
-            if (req.readyState === 4) {
-                return;
+                req.send(null);
             }
-            req.send(null);
+            catch ( e ) {
+            }
         }, isUnsupportedMediaQuery = function (query) {
             return query.replace(respond.regex.minmaxwh, '').match(respond.regex.other);
         };
